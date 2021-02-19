@@ -1,0 +1,55 @@
+#brand {
+  font-family: 'Black Ops One', verdana; 
+}
+
+#barra {
+  background-color: lightgrey;
+  position: sticky;
+}
+
+#cuerpo {
+  overflow: hidden;
+}
+
+#titulo {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+#btnComprar {
+  background-color: #FF6400;
+  border-color: #FF6400;
+}
+
+#btncerrar{
+  float: left;
+}
+
+#nomsesion {
+  font-weight: bold;
+  color: black;
+}
+
+#nomsesion:hover {
+  color: black;
+}
+
+#pie {
+  background-color: lightgray;
+}
+
+#formIni {
+  margin-top: 50%;
+}
+
+#registlink {
+	text-decoration: none;
+	color: black;
+	transition: all .3s;
+}
+
+#registlink:hover {
+	text-decoration: underline;
+	color: #FF6400;
+}
