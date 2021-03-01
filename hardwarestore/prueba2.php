@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require("conexion.php");
+	require("conexionBBDD.php");
 
 	if(isset($_POST['btnsesion'])) {
 		if ($_POST['usernm'] != "" && $_POST['passwd'] != "") {

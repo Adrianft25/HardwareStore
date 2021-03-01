@@ -1,5 +1,5 @@
 <?php
-require("conexion.php");
+require("conexionBBDD.php");
 if (!$_SESSION['btnsesion']) {
 	header("location:Register.php");
 }

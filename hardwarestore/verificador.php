@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-include 'conexion2.php';
+include 'conexionBBDD.php';
 include 'carrito.php';
 include 'templates/cabecera.php';
 ?>
