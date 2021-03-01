@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "conexionAdmin.php";
+include "conexionBBDD.php";
 include 'templates/cabecera.php';
 
 $txtID = (isset($_POST['txtID'])) ? $_POST['txtID'] : "";
