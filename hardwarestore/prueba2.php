@@ -9,24 +9,22 @@
 
 			$encriptacion2 = sha1($passuser);
 
-			$sql4 = "SELECT * FROM usuarios WHERE nomUser = '$username' AND contraUser = '$encriptacion2'";
+			$sql = $pdo->prepare("SELECT * FROM usuarios WHERE nomUser = '$username' AND contraUser = '$encriptacion2'");
+			
+			$sql->execute();
+            $arrayUsuarios = $sql->fetch(PDO::FETCH_ASSOC);
 
-			//$sql4 = "SELECT idAdmin FROM usuarios WHERE nomUser = 'admin' AND idusuarios = '1'";
+			if($arrayUsuarios['nomUser'] == $username && $arrayUsuarios['contraUser'] == $encriptacion2) {
+                $_SESSION['btnsesion']="dog";
+                $_SESSION['nombre'] = $username;
+                header("Location: bootstrap.php");
 
-			$result4 = mysqli_query($con,$sql4);
-
-			$contar4 = mysqli_num_rows($result4);
-
-			if ($contar4 == 1) {
-				$_SESSION['btnsesion'] = 'dog';
-				$_SESSION['nombre'] = $username;
-				header("location:bootstrap.php");
-			} else {
-				header("location:Register.php");
-				echo "<script>alert('Usuario o contraseña incorrecto(s)')</script>";
-			}
-		} else {
-			echo "Rellena todos los campos";
+            } else {
+                echo("<script>alert('Usuario y/o contraseña incorrecto(s)');
+                window.location.href='./register.php';</script>");
+                
+                //header("Location: inicio.php");
+            }
 		}
 	}
 ?>
