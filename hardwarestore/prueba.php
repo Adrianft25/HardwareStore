@@ -1,10 +1,7 @@
 <?php
 	session_start();
 	require("conexionBBDD.php");
-?>
 
-
-	<?php
 		if(isset($_POST['btnreg']) && $_POST['usernm2'] != "" && $_POST['passwd2'] != "" && $_POST['email2'] != "" && $_POST['movil2'] != "") {
 			$username2 = $_POST['usernm2'];
 			$passuser2 = $_POST['passwd2'];
@@ -13,28 +10,28 @@
 
 			$encriptacion = sha1($passuser2);
 
-			$sql2 = "SELECT * FROM usuarios WHERE nomUser = '$username2'";
-			$sql3 = "SELECT * FROM usuarios WHERE mailUser = '$mailuser'";
+			$sql2 = $pdo->prepare("SELECT * FROM usuarios WHERE nomUser = '$username2'");
+			$sql3 = $pdo->prepare("SELECT * FROM usuarios WHERE mailUser = '$mailuser'");
 
-			$result2 = mysqli_query($con,$sql2);
-			$result3 = mysqli_query($con,$sql3);
+			$sql2->execute();
+			$sql3->execute();
 
-			$contar1 = mysqli_num_rows($result2);
-			$contar2 = mysqli_num_rows($result3);
+			$usuarioExiste = $sql2->fetch(PDO::FETCH_ASSOC);
+			$correoExiste = $sql3->fetch(PDO::FETCH_ASSOC);
 
-			if($contar1 == 1) {
-				echo "<script>alert('Este nombre de usuario ya está registrado')</script>";
-				header("location:Register2.php");
-			} else if($contar2 == 1) {
-				echo "<script>alert('Este correo electrónico ya está registrado');</script>";
-				header("location:Register2.php");
+			if($usuarioExiste['nomUser'] == $username2) {
+				echo "<script>alert('Este nombre de usuario ya está registrado');
+				window.location.href='./Register2.php';</script>";
+			} else if($correoExiste['mailUser'] == $mailuser) {
+				echo "<script>alert('Este correo electrónico ya está registrado');
+				window.location.href='./Register2.php';</script>";
 			} else {
-				$sql = "INSERT INTO usuarios (nomUser, contraUser, mailUser,movilUser) VALUES ('$username2','$encriptacion','$mailuser','$moviluser')";
-				$result = mysqli_query($con,$sql);
+				$sql4 = $pdo->prepare("INSERT INTO usuarios (nomUser, contraUser, mailUser,movilUser) VALUES ('$username2','$encriptacion','$mailuser','$moviluser')");
+				$sql4->execute();
 
 				$_SESSION['btnsesion']="dog";
 				$_SESSION['nombre'] = $username2;
-				header("location:bootstrap.php");
+				header("location:productos.php");
 			}	
 		} else {
 			echo "Asegurate de que todos los campos están cubiertos";

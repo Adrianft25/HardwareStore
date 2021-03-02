@@ -20,7 +20,7 @@ switch ($accion) {
         $sentencia->bindParam(':Descripcion', $txtDescripcion);
         $sentencia->bindParam(':Imagen', $txtImagen);
         $sentencia->execute();
-        header("location:Administrador.php");
+        header("location:administrador.php");
         break;
 
     case 'btnMod':
@@ -33,7 +33,7 @@ switch ($accion) {
         $sentencia->bindParam(':id', $txtID);
         $sentencia->execute();
 
-        header("location:Administrador.php");
+        header("location:administrador.php");
         break;
 
     case 'btnDel':
@@ -42,11 +42,11 @@ switch ($accion) {
         $sentencia->bindParam(':id', $txtID);
         $sentencia->execute();
 
-        header("location:Administrador.php");
+        header("location:administrador.php");
         break;
 
     case 'btnCanc':
-        header("location:Administrador.php");
+        header("location:administrador.php");
         break;
 }
 

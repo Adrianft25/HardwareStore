@@ -35,16 +35,16 @@ if (!$_SESSION['btnsesion']) {
 					<a class="nav-link" href="Principal.php">Principal<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="bootstrap.php">Productos<span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="productos.php">Productos<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="Ubicacion.php">Ubicación<span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="ubicacion.php">Ubicación<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
                     <a class="nav-link" href="mostrarCarrito.php">Carrito (<?php echo (empty($_SESSION['CARRITO']))?0:count($_SESSION['CARRITO']);?>)<span class="sr-only">(current)</span></a>
 				</li>
 			</ul>
-			<a href="Administrador.php"><span id="nomsesion" class="mr-sm-2"><?php echo $_SESSION['nombre'];?></span></a>
+			<a href="administrador.php"><span id="nomsesion" class="mr-sm-2"><?php echo $_SESSION['nombre'];?></span></a>
 			<a class="btn btn-danger my-2 my-lg-0" href="cerrarsesion.php" id="btncerrar">Cerrar Sesión<span class="sr-only">(current)</span></a>
 		</div>
 	</nav>

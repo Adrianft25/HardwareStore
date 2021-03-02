@@ -17,13 +17,11 @@
 			if($arrayUsuarios['nomUser'] == $username && $arrayUsuarios['contraUser'] == $encriptacion2) {
                 $_SESSION['btnsesion']="dog";
                 $_SESSION['nombre'] = $username;
-                header("Location: bootstrap.php");
+                header("Location: productos.php");
 
             } else {
                 echo("<script>alert('Usuario y/o contraseña incorrecto(s)');
                 window.location.href='./register.php';</script>");
-                
-                //header("Location: inicio.php");
             }
 		}
 	}

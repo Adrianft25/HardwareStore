@@ -30,7 +30,7 @@
 					<a class="nav-link" href="Principal.php">Principal<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="bootstrap.php">Productos<span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="productos.php">Productos<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="Register.php">Ubicación<span class="sr-only">(current)</span></a>
