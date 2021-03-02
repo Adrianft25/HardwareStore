@@ -2,6 +2,6 @@
 	session_start();
 	if (session_start()) {
 		session_destroy();
-		header("location:Register.php");
+		header("location:login.php");
 	}
 ?>

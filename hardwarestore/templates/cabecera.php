@@ -1,7 +1,7 @@
 <?php
 require("conexionBBDD.php");
 if (!$_SESSION['btnsesion']) {
-	header("location:Register.php");
+	header("location:login.php");
 }
 
 ?>
