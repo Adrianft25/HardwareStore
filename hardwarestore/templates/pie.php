@@ -1,5 +1,5 @@
 </div>
-<footer id="pie" class="footer mt-auto py-3 fixed-bottom">
+<footer id="pie" class="footer mt-auto py-3">
   <div class="container text-center">
     <span class="text-muted">Adrián Freire Torres</span>
   </div>
