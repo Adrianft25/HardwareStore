@@ -41,10 +41,7 @@
 			</ul>
 		</div>
 	</nav>
-	<br>
-	<br>
-	<br>
-	<div class="container col-2">
+	<div class="container col-3">
 		<form id="formIni" class="form-signin" method="POST" action="registerForm.php">
 			<h1 class="h3 mb-3 font-weight-normal text-center">Regístrate</h1>
 			<label for="" class="sr-only">Username</label>
@@ -58,6 +55,10 @@
 			<br>
 			<input id="btnComprar" class="btn btn-lg btn-primary btn-block" type="submit" name="btnreg" value="Registrarse">
 		</form>
+		<br>
+		<br>
+		<br>
+		<br>
 	<?php
 include 'templates/pie.php';
 ?>

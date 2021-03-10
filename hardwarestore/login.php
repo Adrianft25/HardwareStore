@@ -41,10 +41,7 @@
 			</ul>
 		</div>
 	</nav>
-	<br>
-	<br>
-	<br>
-	<div class="container col-2">
+	<div class="container col-3">
 		<form id="formIni" class="form-signin" method="POST" action="loginForm.php">
 			<h1 class="h3 mb-3 font-weight-normal text-center">Inicia Sesión</h1>
 			<label for="" class="sr-only">Username</label>
@@ -53,8 +50,12 @@
 			<input class="form-control" type="password" maxlength="25" id="pass" name="passwd" placeholder="Contraseña" required>
 			<br>
 			<input id="btnComprar" class="btn btn-lg btn-primary btn-block" type="submit" name="btnsesion" value="Iniciar Sesión">
-			<p>Si aún no tienes cuenta puedes <a href="registrate.php" id="registlink">registrarte aquí</a>.</p>
+			<br>
+			<p class="text-center">Si aún no tienes cuenta puedes <a href="registrate.php" id="registlink">registrarte aquí</a>.</p>
 		</form>
+		<p class="text-center"><a href="loginGA.php" id="authlink">¡Regístrate o logueate aquí si quieres usar Google Authenticator!</a></p>
+		<br>
+		<br>
 <?php
 include 'templates/pie.php';
 ?>

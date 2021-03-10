@@ -1,87 +1,92 @@
 <?php
-class userClass
-{
-	 /* User Login */
-     public function userLogin($usernameEmail,$password,$secret)
-     {
+class Usuario {
 
-          $db = getDB();
-          $hash_password= hash('sha256', $password);
-          $stmt = $db->prepare("SELECT uid FROM users WHERE  (username=:usernameEmail or email=:usernameEmail) AND  password=:hash_password");  
-          $stmt->bindParam("usernameEmail", $usernameEmail,PDO::PARAM_STR) ;
-          $stmt->bindParam("hash_password", $hash_password,PDO::PARAM_STR) ;
-          $stmt->execute();
-          $count=$stmt->rowCount();
-          $data=$stmt->fetch(PDO::FETCH_OBJ);
-          $db = null;
-          if($count)
-          {
-               $_SESSION['uid']=$data->uid;
-               $_SESSION['google_auth_code']=$google_auth_code;
-                return true;
-          }
-          else
-          {
+     public function loginUsuarios ($usuariomailga,$passuga,$secret) {
+
+          $BBDD = conexionBD();
+          $passencrypt = hash('sha256', $passuga);
+
+          $sqlga = $BBDD->prepare("SELECT idusuarioga FROM usuariosga WHERE nameuga=:usuarioga AND passuga=:hash_password");  
+          
+          $sqlga->bindParam("usuarioga", $usuariomailga,PDO::PARAM_STR) ;
+          $sqlga->bindParam("hash_password", $passencrypt,PDO::PARAM_STR) ;
+          
+          $sqlga->execute();
+          
+          $count = $sqlga->rowCount();
+          $data = $sqlga->fetch(PDO::FETCH_OBJ);
+          
+          $BBDD = null;
+          
+          if ($count) {
+               $_SESSION['idusuarioga'] = $data->idusuarioga;
+               $_SESSION['codigouga'] = $codigouga;
+               return true;
+          } else {
                return false;
           }    
      }
 
-     /* User Registration */
-     public function userRegistration($username,$password,$email,$name,$secret)
-     {
-          try{
-          $db = getDB();
-          $st = $db->prepare("SELECT uid FROM users WHERE username=:username OR email=:email");  
-          $st->bindParam("username", $username,PDO::PARAM_STR);
-          $st->bindParam("email", $email,PDO::PARAM_STR);
-          $st->execute();
-          $count=$st->rowCount();
-          if($count<1)
-          {
-          $stmt = $db->prepare("INSERT INTO users(username,password,email,name,google_auth_code) VALUES (:username,:hash_password,:email,:name,:google_auth_code)");  
-          $stmt->bindParam("username", $username,PDO::PARAM_STR) ;
-          $hash_password= hash('sha256', $password);
-          $stmt->bindParam("hash_password", $hash_password,PDO::PARAM_STR) ;
-          $stmt->bindParam("email", $email,PDO::PARAM_STR) ;
-          $stmt->bindParam("name", $name,PDO::PARAM_STR) ;
-          $stmt->bindParam("google_auth_code", $secret,PDO::PARAM_STR) ;
-          $stmt->execute();
-          $uid=$db->lastInsertId();
-          $db = null;
-          $_SESSION['uid']=$uid;
-          return true;
+     public function registroUsuarios ($nameuga,$passuga,$mailuga,$teluga,$secret) {
+          try {
+               $BBDD = conexionBD();
+               
+               $sqlga = $BBDD->prepare("SELECT idusuarioga FROM usuariosga WHERE nameuga=:nameuga OR mailuga=:mailuga");  
+               
+               $sqlga->bindParam("nameuga", $nameuga,PDO::PARAM_STR);
+               $sqlga->bindParam("mailuga", $mailuga,PDO::PARAM_STR);
+               
+               $sqlga->execute();
+               
+               $count = $sqlga->rowCount();
+               
+               if ($count < 1) {
+                    $sqlga = $BBDD->prepare("INSERT INTO usuariosga (nameuga, passuga, mailuga, teluga, codigouga) VALUES (:nameuga,:hash_password,:mailuga,:teluga,:codigouga)");  
+                    
+                    $sqlga->bindParam("nameuga", $nameuga,PDO::PARAM_STR) ;
+                    $passencrypt= hash('sha256', $passuga);
+                    $sqlga->bindParam("hash_password", $passencrypt,PDO::PARAM_STR) ;
+                    $sqlga->bindParam("mailuga", $mailuga,PDO::PARAM_STR) ;
+                    $sqlga->bindParam("teluga", $teluga,PDO::PARAM_STR) ;
+                    $sqlga->bindParam("codigouga", $secret,PDO::PARAM_STR) ;
+                    
+                    $sqlga->execute();
+                    
+                    $idusuarioga = $BBDD->lastInsertId();
+                    
+                    $BBDD = null;
+                    
+                    $_SESSION['idusuarioga'] = $idusuarioga;
+                    
+                    return true;
 
-          }
-          else
-          {
-          $db = null;
-          return false;
-          }
+               } else {
+                    $BBDD = null;
+                    return false;
+               }
           
          
-          } 
-          catch(PDOException $e) {
-          echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+          } catch (PDOException $e) {
+               echo "Algo salió mal :(". $e->getMessage();
           }
      }
      
-     /* User Details */
-     public function userDetails($uid)
-     {
-        try{
-          $db = getDB();
-          $stmt = $db->prepare("SELECT email,username,name,google_auth_code FROM users WHERE uid=:uid");  
-          $stmt->bindParam("uid", $uid,PDO::PARAM_INT);
-          $stmt->execute();
-          $data = $stmt->fetch(PDO::FETCH_OBJ);
-          return $data;
-         }
-         catch(PDOException $e) {
-          echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+     public function detallesUsuarios($idusuarioga) {
+          try {
+               $BBDD = conexionBD();
+
+               $sqlga = $BBDD->prepare("SELECT nameuga, mailuga, teluga, codigouga FROM usuariosga WHERE idusuarioga=:idusuarioga");
+
+               $sqlga->bindParam("idusuarioga", $idusuarioga,PDO::PARAM_INT);
+               
+               $sqlga->execute();
+               
+               $data = $sqlga->fetch(PDO::FETCH_OBJ);
+               
+               return $data;
+          } catch (PDOException $e) {
+               echo "Algo salió mal :(". $e->getMessage();
           }
-
      }
-
-
 }
 ?>

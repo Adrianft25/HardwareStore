@@ -53,3 +53,24 @@
 	text-decoration: underline;
 	color: #FF6400;
 }
+
+#authlink {
+	text-decoration: none;
+	color: black;
+	transition: all .3s;
+}
+
+#authlink:hover {
+	text-decoration: underline;
+	color: #FF6400;
+}
+
+#btnLoginGA {
+  background-color: #FF6400;
+  border-color: #FF6400;
+}
+
+#btnRegGA {
+  background-color: #FF6400;
+  border-color: #FF6400;
+}

@@ -1,4 +1,24 @@
 <?php
+/*
+include('config.php');
+include('class/userClass.php');
+$usuario = new Usuario();
+$detallesUsuario = $usuario->detallesUsuarios($_SESSION['idusuarioga']);
+
+if($_POST['code']) {
+    $codigoAPP = $_POST['code'];
+    $secret = $detallesUsuario->codigouga;
+    require_once 'googleLib/GoogleAuthenticator.php';
+    $ga = new GoogleAuthenticator();
+    $codigoCheck = $ga->verifyCode($secret, $codigoAPP, 2);    // 2 = 2*30sec clock tolerance
+    if ($codigoCheck) {
+    	session_start();
+    } else {
+        echo 'FALLO';
+    }
+
+}
+*/
 require("conexionBBDD.php");
 if (!$_SESSION['btnsesion']) {
 	header("location:login.php");
