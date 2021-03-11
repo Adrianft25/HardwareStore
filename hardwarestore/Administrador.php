@@ -15,31 +15,31 @@ switch ($accion) {
     case 'btnAdd':
         $sentencia = $pdo->prepare("INSERT INTO productos (Nombre, Precio, Descripcion, Imagen) VALUES (:Nombre, :Precio, :Descripcion, :Imagen);");
 
-        $sentencia->bindParam(':Nombre', $txtNombre);
-        $sentencia->bindParam(':Precio', $txtPrecio);
-        $sentencia->bindParam(':Descripcion', $txtDescripcion);
-        $sentencia->bindParam(':Imagen', $txtImagen);
+        $sentencia->bindParam('Nombre', $txtNombre);
+        $sentencia->bindParam('Precio', $txtPrecio);
+        $sentencia->bindParam('Descripcion', $txtDescripcion);
+        $sentencia->bindParam('Imagen', $txtImagen);
         $sentencia->execute();
         header("location:administrador.php");
         break;
 
     case 'btnMod':
-        $sentencia = $pdo->prepare("UPDATE productos SET(Nombre=:Nombre, Precio=:Precio, Descripcion=:Descripcion, Imagen=:Imagen) WHERE id=:id");
+        $sentencia = $pdo->prepare("UPDATE productos SET(Nombre=:Nombre, Precio=:Precio, Descripcion=:Descripcion, Imagen=:Imagen) WHERE ID=:ID");
 
-        $sentencia->bindParam(':Nombre', $txtNombre);
-        $sentencia->bindParam(':Precio', $txtPrecio);
-        $sentencia->bindParam(':Descripcion', $txtDescripcion);
-        $sentencia->bindParam(':Imagen', $txtImagen);
-        $sentencia->bindParam(':id', $txtID);
+        $sentencia->bindParam('Nombre', $txtNombre);
+        $sentencia->bindParam('Precio', $txtPrecio);
+        $sentencia->bindParam('Descripcion', $txtDescripcion);
+        $sentencia->bindParam('Imagen', $txtImagen);
+        $sentencia->bindParam('ID', $txtID);
         $sentencia->execute();
 
         header("location:administrador.php");
         break;
 
     case 'btnDel':
-        $sentencia = $pdo->prepare("DELETE FROM productos WHERE id=:id");
+        $sentencia = $pdo->prepare("DELETE FROM productos WHERE ID=:id");
 
-        $sentencia->bindParam(':id', $txtID);
+        $sentencia->bindParam('id', $txtID);
         $sentencia->execute();
 
         header("location:administrador.php");
@@ -50,7 +50,7 @@ switch ($accion) {
         break;
 }
 
-$sentencia = $pdo->prepare("SELECT * FROM productos WHERE 1");
+$sentencia = $pdo->prepare("SELECT * FROM productos");
 $sentencia->execute();
 $listaProductos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
@@ -100,9 +100,7 @@ $listaProductos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-            Agregar Producto
-        </button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Agregar Producto</button>
 
     </form>
 

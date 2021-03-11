@@ -1,5 +1,5 @@
 <?php 
-include("config.php");
+include("configGA.php");
 if (!empty($_SESSION['idusuarioga'])) {
     header("Location: confirmacionGA.php");
 }
@@ -98,7 +98,7 @@ if (!empty($_POST['signupSubmit'])) {
 	</nav>
     <br>
     <div id="login" class="container col-4">
-        <h3 class="text-center">Login</h3>
+        <h3 class="text-center font-weight-normal">Login</h3>
         <form class="form-signin" method="POST" action="" name="login">
             <label class="sr-only">Nombre de usuario</label>
             <input class="form-control" type="text" name="usernameEmail" placeholder="Nombre de usuario" />
@@ -112,7 +112,7 @@ if (!empty($_POST['signupSubmit'])) {
     <br>
     <br>
     <div id="signup" class="container col-4">
-        <h3 class="text-center">Registro</h3>
+        <h3 class="text-center font-weight-normal">Registro</h3>
         <form method="POST" action="" name="signup">
             <label class="sr-only">Nombre</label>
             <input class="form-control" type="text" name="nameReg" placeholder="Nombre" />

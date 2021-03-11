@@ -1,5 +1,5 @@
  <?php
-include('config.php');
+include('configGA.php');
 
 if (empty($_SESSION['idusuarioga'])) {
 	header("Location: index.php");
@@ -36,7 +36,7 @@ $codigoQR = $ga->getQRCodeGoogleUrl($mailuga, $secret,'HardwareStore');
 				<div id="img">
 					<img src='<?php echo $codigoQR; ?>' />
 				</div>
-				<form method="post" action="login.php">
+				<form method="post" action="cerrarsesion.php">
 					<label>Introduce el código</label>
 					<input type="text" name="code" />
 					<input type="submit" class="button"/>
