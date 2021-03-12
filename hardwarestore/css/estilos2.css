@@ -74,6 +74,11 @@
   background-color: #FF6400;
   border-color: #FF6400;
 }
+
+#btnConfirmGA {
+  background-color: #FF6400;
+  border-color: #FF6400;
+}
 /*
 ::-webkit-input-placeholder {
   text-align: center;
