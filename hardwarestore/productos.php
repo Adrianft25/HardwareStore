@@ -39,9 +39,9 @@ include 'templates/cabecera.php';
 						<input type="hidden" name="cantidad" id="cantidad" value="<?php echo openssl_encrypt(1, COD, KEY); ?>">
 						<button class="btn btn-primary" id="btnComprar" value="Agregar" name="btnCarrito" type="submit">Comprar</button>
 					</form>
-
 				</div>
 			</div>
+			<br>
 		</div>
 	<?php } ?>
 
